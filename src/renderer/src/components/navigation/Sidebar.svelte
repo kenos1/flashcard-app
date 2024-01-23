@@ -2,6 +2,7 @@
   import { Link } from 'svelte-routing'
   import { fly } from 'svelte/transition'
   import { IconMenu, IconFolderOpen } from '@tabler/icons-svelte'
+  import FolderSelector from './FolderSelector.svelte'
 
   import { APP_ROUTES } from '../../lib/util.ts'
   import { sidebarOpen } from '../../lib/store.ts'
@@ -10,10 +11,7 @@
 <div transition:fly={{ x: '-100%' }} class="min-w-[12rem] bg-bg-1 flex flex-col p-2 gap-4">
   <div class="flex flex-row">
     <button class="p-2 hover:bg-bg-2 rounded-md" on:click={() => sidebarOpen}><IconMenu /></button>
-    <label class="p-2 hover:bg-bg-2 rounded-md" on:click={() => sidebarOpen}>
-      <input type="file" class="hidden" />
-      <IconFolderOpen />
-    </label>
+    <FolderSelector />
   </div>
   {#each APP_ROUTES as route}
     <Link to={route.path}>
